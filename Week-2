@@ -79,7 +79,7 @@ def initialize_with_zeros(dim):
 #####################################################################################################################################
 
 
-# FUNCTION: propagate
+    # GRADED FUNCTION: propagate
 
 def propagate(w, b, X, Y):
     """
@@ -104,7 +104,7 @@ def propagate(w, b, X, Y):
     
     # FORWARD PROPAGATION (FROM X TO COST)
     ### START CODE HERE ### (≈ 2 lines of code)
-    A = sigmoid(np.array(np.dot(w,X)+b))                                   # compute activation
+    A = sigmoid(np.array(np.dot(w,X)+b*np.ones(X.shape[0],1))                                   # compute activation
     cost =-1*np.log(A)                             # compute cost
     ### END CODE HERE ###
     
