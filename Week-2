@@ -104,15 +104,15 @@ def propagate(w, b, X, Y):
     
     # FORWARD PROPAGATION (FROM X TO COST)
     ### START CODE HERE ### (≈ 2 lines of code)
-    A = sigmoid(np.array(np.dot(w,X)+b*np.ones(X.shape[0],1))                                   # compute activation
-    cost =-1*np.log(A)                             # compute cost
+    A = sigmoid(np.dot(w.T,X)+b)#*np.ones(X.shape[0],1))                                   # compute activation
+    cost = -1/m * (np.dot(Y,np.log(A).T) + np.dot((1-Y),np.log(1 - A).T))                       # compute cost
     ### END CODE HERE ###
     
     # BACKWARD PROPAGATION (TO FIND GRAD)
     ### START CODE HERE ### (≈ 2 lines of code)
-    dw = np.gradient(cost,w)
-    db = np.gradient(cost,b)
-    ### END CODE HERE ###
+    dw = 1 / m *(np.dot(X,(A - Y).T))
+    db = 1 / m *(np.sum(A - Y))
+### END CODE HERE ###
 
     assert(dw.shape == w.shape)
     assert(db.dtype == float)
